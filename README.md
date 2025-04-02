@@ -65,5 +65,13 @@ backend http_back
 assume that we have below test environments : <br>
 ![haproxy1](https://github.com/user-attachments/assets/4190d7a9-ad6e-4607-88a7-1567741a681c) <br>
 first we install nginx on both two ubuntu 24.04 servers and install haproxy on haproxy node . <br>
+now we copy config file for backup and then change the config file : <br>
+```bash
+# sudo cp /etc/haproxy/haproxy.conf /etc/haproxy/haproxy.conf.back
+# sudo vi /etc/haproxy/haproxy.conf
+```
+haproxy config has <b>four</b> main parts : <br>
+1- Global: <br>
+the main part for haproxy proccessing <br>
 
 
