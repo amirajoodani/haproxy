@@ -92,5 +92,21 @@ time wait for answering client to proccessed data to haproxy . <br>
 3- <b>timeout server : </b><br>
 time wait for answering backend server to proccesses data to haproxy . <br>
 
+now we import below config and reload haproxy :
+```haproxy
+frontend http_front
+   bind *:80
+   mode http
+   default_backend http_back
+
+backend http_back
+   balance roundrobin
+   server server1 192.168.1.59:80
+   server server2 192.168.1.12:80
+```
+```bash
+# sudo systemctl reload haproxy
+```
+
 
 
