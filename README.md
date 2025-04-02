@@ -59,7 +59,7 @@ backend http_back
    balance roundrobin
    server server1 192.168.1.10:80 check
    server server2 192.168.1.11:80 check
-
+```
 ## Scenario one : HTTP LoadBalancing
 
 assume that we have below test environments : <br>
