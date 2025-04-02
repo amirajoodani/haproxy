@@ -101,8 +101,8 @@ frontend http_front
 
 backend http_back
    balance roundrobin
-   server server1 192.168.1.59:80
-   server server2 192.168.1.12:80
+   server server1 192.168.1.59:80 check
+   server server2 192.168.1.12:80 check
 ```
 ```bash
 # sudo systemctl reload haproxy
