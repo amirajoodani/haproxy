@@ -70,11 +70,16 @@ now we copy config file for backup and then change the config file : <br>
 # sudo cp /etc/haproxy/haproxy.conf /etc/haproxy/haproxy.conf.back
 # sudo vi /etc/haproxy/haproxy.conf
 ```
-haproxy config has <b>two</b> main parts : <br>
+haproxy config has <b>four</b> main parts : <br>
 1- Global: <br>
 the main part for haproxy proccessing <br>
 2- defaults: <br>
 some defaults configuaraion like mode is store here . if in that file , we use other mode like tcp , <b>tcp</b> is the main mode and overwrite the default config on top of the file <br>
+3- frontend: <br>
+the part to define reverse proxy . <br>
+4- backend: <br>
+the pool of backnd server for answering requests . <br>
+
 note : for checking haproxy config we can use : <br>
 ```bash
 # sudo haproxy -c -f /etc/haproxy/haproxy.cfg
