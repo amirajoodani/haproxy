@@ -107,6 +107,8 @@ backend http_back
 ```bash
 # sudo systemctl reload haproxy
 ```
+now based on roundrobin algorithm one request send to server 1 and next one send to server 2 <br>
+![2](https://github.com/user-attachments/assets/303599c1-dee2-4f8c-870e-30a76d2034f8) <br>
 
 
 
