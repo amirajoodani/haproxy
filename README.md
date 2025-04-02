@@ -63,7 +63,7 @@ backend http_back
 ## Scenario one : HTTP LoadBalancing
 
 assume that we have below test environments : <br>
-![haproxy1](https://github.com/user-attachments/assets/4190d7a9-ad6e-4607-88a7-1567741a681c)
+![haproxy1](https://github.com/user-attachments/assets/4190d7a9-ad6e-4607-88a7-1567741a681c) <br>
 first we install nginx on both two ubuntu 24.04 servers and install haproxy on haproxy node . <br>
 
 
