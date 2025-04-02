@@ -70,7 +70,7 @@ now we copy config file for backup and then change the config file : <br>
 # sudo cp /etc/haproxy/haproxy.conf /etc/haproxy/haproxy.conf.back
 # sudo vi /etc/haproxy/haproxy.conf
 ```
-haproxy config has <b>four</b> main parts : <br>
+haproxy config has <b>two</b> main parts : <br>
 1- Global: <br>
 the main part for haproxy proccessing <br>
 2- defaults: <br>
@@ -79,7 +79,13 @@ note : for checking haproxy config we can use : <br>
 ```bash
 # sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 ```
-
+<b>note:</b> we have three timeout in default config: <br>
+1- timeout connect : <br>
+the time that haproxy check the backend server for up and running . if the backend server does not answer to haproxy , server failed and haproxy does not send data to it . <br>
+2- timeout client : <br>
+time wait for answering client to proccessed data to haproxy . <br>
+3- timeout server : <br>
+time wait for answering backend server to proccesses data to haproxy . <br>
 
 
 
