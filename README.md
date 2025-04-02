@@ -74,7 +74,7 @@ haproxy config has <b>four</b> main parts : <br>
 1- Global: <br>
 the main part for haproxy proccessing <br>
 2- defaults: <br>
-some defaults configuaraion like mode is store here . if in that file , we use other mode like tcp , <b>tcp</b> is the main mode and overwrite the default config on top of the file
+some defaults configuaraion like mode is store here . if in that file , we use other mode like tcp , <b>tcp</b> is the main mode and overwrite the default config on top of the file <br>
 note : for checking haproxy config we can use : <br>
 ```bash
 # sudo haproxy -c -f /etc/haproxy/haproxy.cfg
