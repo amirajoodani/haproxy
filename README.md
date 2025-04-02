@@ -80,11 +80,11 @@ note : for checking haproxy config we can use : <br>
 # sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 ```
 <b>note:</b> we have three timeout in default config: <br>
-1- timeout connect : <br>
+1- <b>timeout connect : </b><br>
 the time that haproxy check the backend server for up and running . if the backend server does not answer to haproxy , server failed and haproxy does not send data to it . <br>
-2- timeout client : <br>
+2- <b>timeout client : </b><br>
 time wait for answering client to proccessed data to haproxy . <br>
-3- timeout server : <br>
+3- <b>timeout server : </b><br>
 time wait for answering backend server to proccesses data to haproxy . <br>
 
 
