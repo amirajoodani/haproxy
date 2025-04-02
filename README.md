@@ -59,3 +59,11 @@ backend http_back
    balance roundrobin
    server server1 192.168.1.10:80 check
    server server2 192.168.1.11:80 check
+
+## Scenario one : HTTP LoadBalancing
+
+assume that we have below test environments : <br>
+![haproxy1](https://github.com/user-attachments/assets/4190d7a9-ad6e-4607-88a7-1567741a681c)
+first we install nginx on both two ubuntu 24.04 servers and install haproxy on haproxy node . <br>
+
+
