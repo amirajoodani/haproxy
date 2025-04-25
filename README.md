@@ -110,5 +110,132 @@ backend http_back
 now based on roundrobin algorithm one request send to server 1 and next one send to server 2 <br>
 ![2](https://github.com/user-attachments/assets/303599c1-dee2-4f8c-870e-30a76d2034f8) <br>
 
+Here's the English version formatted in GitHub Markdown (MD) format:
+
+```markdown
+# HAProxy ACL Configuration Examples
+
+## Base Scenario
+You have two Nginx servers (`web1` and `web2`) behind an HAProxy load balancer.
+
+## 1. Path-Based Routing
+**Scenario**: Route `/blog` to web1 and `/shop` to web2
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl is_blog path_beg /blog
+    acl is_shop path_beg /shop
+    
+    use_backend blog_servers if is_blog
+    use_backend shop_servers if is_shop
+    default_backend web_servers
+
+backend blog_servers
+    server web1 192.168.1.10:80 check
+
+backend shop_servers
+    server web2 192.168.1.11:80 check
+
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
+
+## 2. Client IP-Based Routing
+**Scenario**: Route internal network (192.168.1.0/24) to web1 only
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl is_internal src 192.168.1.0/24
+    
+    use_backend internal_servers if is_internal
+    default_backend web_servers
+
+backend internal_servers
+    server web1 192.168.1.10:80 check
+
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
+
+## 3. Blocking Bad User Agents
+**Scenario**: Block scanner user agents
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl is_scanner hdr_sub(User-Agent) -i scanner
+    
+    http-request deny if is_scanner
+    default_backend web_servers
+
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
+
+## 4. Cookie-Based Routing
+**Scenario**: Route based on `preferred_server` cookie
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl prefers_web1 cook(preferred_server) -m str -i web1
+    
+    use_backend web1_servers if prefers_web1
+    default_backend web_servers
+
+backend web1_servers
+    server web1 192.168.1.10:80 check
+
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
+
+## 5. Combined ACL Conditions
+**Scenario**: Block specific IP from /admin
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl is_bad_ip src 192.168.1.100
+    acl is_admin path_beg /admin
+    
+    http-request deny if is_bad_ip is_admin
+    default_backend web_servers
+
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
+
+## Key Features of HAProxy ACLs
+
+✔ Define true/false conditions for traffic handling  
+✔ Combine multiple conditions with logical operators  
+✔ Support various matching criteria:  
+  - IP addresses  
+  - HTTP headers  
+  - URL paths  
+  - Cookies  
+  - and more...  
+✔ Enable smart routing decisions  
+✔ Provide security controls  
+
+> **Note**: All ACLs are defined in the `frontend` section of your HAProxy configuration.
+```
+
+This Markdown format:
+1. Uses proper GitHub-flavored syntax
+2. Maintains code blocks with language specification
+3. Includes clear section headers
+4. Has consistent formatting
+5. Uses lists and note blocks for better readability
+6. Is ready to commit directly to a GitHub repository
+
 
 
