@@ -110,10 +110,8 @@ backend http_back
 now based on roundrobin algorithm one request send to server 1 and next one send to server 2 <br>
 ![2](https://github.com/user-attachments/assets/303599c1-dee2-4f8c-870e-30a76d2034f8) <br>
 
-Here's the English version formatted in GitHub Markdown (MD) format:
 
-```markdown
-# HAProxy ACL Configuration Examples
+# ## Scenario Two : HAProxy ACL Configuration Examples
 
 ## Base Scenario
 You have two Nginx servers (`web1` and `web2`) behind an HAProxy load balancer.
@@ -226,16 +224,6 @@ backend web_servers
 ✔ Enable smart routing decisions  
 ✔ Provide security controls  
 
-> **Note**: All ACLs are defined in the `frontend` section of your HAProxy configuration.
-```
-
-This Markdown format:
-1. Uses proper GitHub-flavored syntax
-2. Maintains code blocks with language specification
-3. Includes clear section headers
-4. Has consistent formatting
-5. Uses lists and note blocks for better readability
-6. Is ready to commit directly to a GitHub repository
 
 
 
