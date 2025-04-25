@@ -223,6 +223,26 @@ backend web_servers
     server web2 192.168.1.11:80 check
 ```
 
+## 6. ACL For Url Parameters
+**Scenario**: send request with special url param to one server <br>
+in this example if search ?region=east request goes to server 2 and search ?region=west request goes to server one
+
+```haproxy
+frontend http_front
+    bind *:80
+    acl urlparam1 url_param(region) -i -m str west
+    acl urlparam2 url_param(region) -i -m str east
+    use_backend web1 if urlparam1
+    use_backend web2 if urlparam2
+    default_backend web_servers
+backend web1
+    server web1 192.168.1.10:80 check
+backend web2
+    server web2 192.168.1.11:80 check
+backend web_servers
+    server web1 192.168.1.10:80 check
+    server web2 192.168.1.11:80 check
+```
 ## Key Features of HAProxy ACLs
 
 ✔ Define true/false conditions for traffic handling  
