@@ -174,6 +174,18 @@ backend web_servers
     server web1 192.168.1.10:80 check
     server web2 192.168.1.11:80 check
 ```
+How It Works:
+hdr_sub(User-Agent) examines the User-Agent header
+
+-i makes the match case-insensitive
+
+Looks for the substring "scanner" in User-Agent
+
+Common patterns to block:
+
+acl is_scanner hdr_sub(User-Agent) -i (nmap|wget|curl|nikto|dirbuster)
+
+acl is_bot hdr_sub(User-Agent) -i (bot|crawl|spider)
 
 ## 4. Cookie-Based Routing
 **Scenario**: Route based on `preferred_server` cookie
