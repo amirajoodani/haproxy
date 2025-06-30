@@ -303,3 +303,10 @@ Preserves the original URI path.<br>
 
 Matches requests using the Host header. <br>
 
+we can use drop query to do this (prefix-drop-query): <br>
+nextsysadmin.com/path  --> nextsysadmin.ir <br>
+
+it means all the path after url removed . <br>
+
+
+
