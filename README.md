@@ -274,6 +274,32 @@ Uses HTTP status code 301 (permanent redirect). <br>
 
 if !{ ssl_fc } ensures the redirect only applies if the request is not already SSL/TLS. <br>
 
+## 🔁 Redirect Specific URL to Another Domain
+```haproxy
+frontend http_in
+    bind *:80
+    mode http
 
+    acl is_old_url path_beg /oldpath
+    redirect location https://newdomain.com/newpath code 301 if is_old_url
+```
+Redirects requests from /oldpath to https://newdomain.com/newpath.<br>
 
+Uses an Access Control List (ACL) to match paths beginning with /oldpath. <br>
+
+## 🔁 Redirect Domain to Another Domain
+
+```haproxy
+frontend http_in
+    bind *:80
+    mode http
+
+    acl is_old_domain hdr(host) -i olddomain.com
+    redirect prefix https://newdomain.com code 301 if is_old_domain
+```
+Redirects all requests from olddomain.com to https://newdomain.com.<br>
+
+Preserves the original URI path.<br>
+
+Matches requests using the Host header. <br>
 
