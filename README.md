@@ -256,6 +256,24 @@ backend web_servers
 ✔ Enable smart routing decisions  
 ✔ Provide security controls  
 
+## scenario3 : # HAProxy URL Redirection Examples
+
+## 🔁 Redirect HTTP to HTTPS
+
+```haproxy
+frontend http_in
+    bind *:80
+    mode http
+    redirect scheme https code 301 if !{ ssl_fc }
+```
+Listens on port 80 (HTTP).<br>
+
+Redirects all traffic to HTTPS.<br>
+
+Uses HTTP status code 301 (permanent redirect). <br>
+
+if !{ ssl_fc } ensures the redirect only applies if the request is not already SSL/TLS. <br>
+
 
 
 
